@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Thank You</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .thankyou-container {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 30px 40px;
+      border-radius: 12px;
+      border: 2px solid #4CAF50;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      max-width: 450px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .thankyou-container img.logo {
+      width: 100px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      color: #2e7d32;
+      font-size: 22px;
+    }
+
+    p {
+      color: #555;
+      font-size: 16px;
+      margin: 15px 0;
+    }
+
+    a.download-btn {
+      display: inline-block;
+      padding: 12px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 16px;
+      transition: background 0.3s ease;
+    }
+
+    a.download-btn:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="thankyou-container">
+    <img src="{{ url_for('static', filename='watermark.jpg') }}" alt="Logo" class="logo">
+    
+    <h2>Jazakallahu Khairan / Jazakillahu Khairan</h2>
+    <p>Your donation has been received.</p>
+
+    <a href="/download/{{ receipt_filename }}" class="download-btn">Download Receipt</a>
+  </div>
+
+</body>
+</html>

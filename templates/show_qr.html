@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Make Payment</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .payment-container {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 30px 40px;
+      border-radius: 12px;
+      border: 2px solid #4CAF50;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      max-width: 450px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .payment-container img.logo {
+      width: 100px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+    }
+
+    .payment-container img.qr {
+      width: 250px;
+      margin: 20px 0;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    p {
+      color: #555;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .highlight {
+      color: #2e7d32;
+      font-weight: bold;
+      font-size: 17px;
+      background-color: #e8f5e9;
+      padding: 10px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+  </style>
+
+  <script>
+    function autoVerify() {
+      setTimeout(function() {
+        window.location.href = "/verify/{{ donation_id }}";
+      }, 15000);  // 15 seconds
+    }
+    window.onload = autoVerify;
+  </script>
+</head>
+
+<body>
+  <div class="payment-container">
+    <img src="{{ url_for('static', filename='watermark.jpg') }}" alt="Logo" class="logo">
+
+    <h2>Please Scan & Pay</h2>
+    <p>Amount to pay: ₹ {{ amount }}</p>
+
+    <img src="{{ url_for('static', filename='qrcodes/' ~ qr_filename) }}" alt="QR Code" class="qr">
+
+    <p class="highlight">After making payment, your receipt will be ready shortly…</p>
+  </div>
+</body>
+</html>
